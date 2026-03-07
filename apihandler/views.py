@@ -216,6 +216,6 @@ def events_handler(request):
 
                 return JsonResponse(data_events, safe=False)
             except Exception as e:
-                return JsonResponse({'error': e}, status=400)
+                return JsonResponse({'error': str(e)}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
