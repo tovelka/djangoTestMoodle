@@ -15,7 +15,7 @@ menu = [
 
 
 def index(request):
-    data = {'menu': menu, 'title': 'MAX Главная'}
+    data = {'menu': menu, 'title': 'Главная'}
     return render(request, 'messenger/index.html', context=data)
 
 
