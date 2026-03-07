@@ -24,6 +24,7 @@ pycodestyle==2.14.0
 pydocstyle==6.3.0
 pyflakes==3.4.0
 Pygments==2.19.2
+python-dotenv==1.2.2
 snowballstemmer==3.0.1
 sqlparse==0.5.5
 stack-data==0.6.3
