@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load messenger_tags %}
+{% block main_block %}
+<h1>Лента новостей </h1>
+<div style="width: 700px; margin-left: 500px;">
+    {% include 'messenger/includes/get_post.html' %}
+</div>
+{% endblock %}

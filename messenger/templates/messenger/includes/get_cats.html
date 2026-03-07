@@ -1,0 +1,9 @@
+<ul>
+    {% for cat in cats %}
+    <li style="padding: 20px; width: 700px;">
+        <a href="{{cat.get_absolute_url}}" {% if cat_slug == cat.slug %} style="color:blue;" {% endif %}>
+            <p><b>{{cat.name}}</b></p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

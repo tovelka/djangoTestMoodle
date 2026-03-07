@@ -1,0 +1,12 @@
+<ul>
+    {% for post in posts %}
+    <li style="padding: 20px; width: 700px;">
+    <a href="#">
+        <p><b>{{post.title}}</b></p>
+    </a>
+    <p>{{post.created_time}}</p>
+    <p>Описание: {{post.content}}</p>
+    </li>
+    {% if not forloop.last %}{% include 'messenger/includes/hr.html' %}{% endif %}
+    {% endfor %}
+</ul>
