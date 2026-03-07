@@ -30,7 +30,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS: list = [
-    '127.0.0.1',
+    'localhost',
+    'tovelka.ru',
+    'www.tovelka.ru',
 ]
 
 
