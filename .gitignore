@@ -1,2 +1,4 @@
-__pycache__*
 .env
+.flake8
+__pycache__
+venv
