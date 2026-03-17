@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'messenger/css/work.css' %}"
+    <title>{{title}}</title>
+</head>
+<body>
+    <header>
+        {% for m in menu %}
+            {% if m.url_name == 'profile' %}
+                <a href="{% url m.url_name name='self' %}">{{m.title}}</a>
+            {% else %}
+                <a href="{% url m.url_name %}">{{m.title}}</a>
+            {% endif %}
+        {% endfor %}
+    </header>
+    {% block main_block %}
+    {% endblock %}
+</body>
+</html>

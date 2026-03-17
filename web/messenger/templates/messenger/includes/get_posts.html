@@ -1,0 +1,16 @@
+<ul>
+    {% for post in posts %}
+    <li style="padding: 20px; width: 700px;">
+        <a href="{{post.get_absolute_url}}">
+            <p><b>{{post.title}}</b></p>
+        </a>
+        <p>{{post.created_time}} -
+            {% for category in post.category.all %}
+                {{category.name}} {% if not forloop.last %} | {% endif %}
+            {% endfor %}
+        </p>
+        <p>{{post.content|safe|linebreaks|truncatewords:40}}</p>
+    </li>
+    {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+</ul>
