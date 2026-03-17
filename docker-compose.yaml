@@ -1,0 +1,73 @@
+services:
+  django_app:
+    build: .
+    container_name: django_web
+    restart: unless-stopped
+    volumes:
+      - ./web:/app/web
+      - ./entrypoint.sh:/app/entrypoint.sh
+      - django_static_data:/app/staticfiles
+    networks:
+      - moodle-net
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - django_static_data:/srv/static:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - django_app
+    networks:
+      - moodle-net
+
+  db:
+    image: mysql:5.7
+    container_name: moodle_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: moodle
+      MYSQL_USER: moodleuser
+      MYSQL_PASSWORD: moodlepassword
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - moodle-net
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  moodle:
+    image: jhardison/moodle:v3.1
+    container_name: moodle_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      DB_PORT_3306_TCP_ADDR: db
+      DB_ENV_MYSQL_DATABASE: moodle
+      DB_ENV_MYSQL_USER: moodleuser
+      DB_ENV_MYSQL_PASSWORD: moodlepassword
+      MOODLE_URL: http://localhost:8080
+    volumes:
+      - moodle_data:/var/moodledata
+    depends_on:
+      - db
+    networks:
+      - moodle-net
+
+
+volumes:
+  django_static_data:
+  db_data:
+  moodle_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  moodle-net:
