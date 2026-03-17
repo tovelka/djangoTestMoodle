@@ -17,10 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from messenger.views import page_404
+from django.http import HttpResponse
+
+def test(request):
+    session_data = dict(request.session.items())
+    return HttpResponse(f"Сессия: {session_data}")
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('api/', include('apihandler.urls')),
+    path('lti/', include('lti_provider.urls')),
+    path('test/', test, name='test'),
     path('', include('messenger.urls')),
 ]
 

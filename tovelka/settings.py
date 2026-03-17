@@ -33,6 +33,8 @@ ALLOWED_HOSTS: list = [
     'localhost',
     'tovelka.ru',
     'www.tovelka.ru',
+    '128.0.0.1',
+    'host.docker.internal',
 ]
 
 
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
     'messenger.apps.MessengerConfig',
     'apihandler.apps.ApihandlerConfig',
     'django_extensions',
+    'lti_provider',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +133,33 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'lti_provider.auth.LTIBackend',  # LTI-бэкенд
+]
+
+PYLTI_CONFIG = {
+    'consumers': {
+        'moodle_test_key': {'secret': 'moodle_test_secret'}
+    },
+    'method_hooks': {
+        'valid_lti_request': 'myapp.lti_hooks.valid_lti_request',  # Путь к вашей функции
+    }
+}
+LTI_TOOL_CONFIGURATION = {
+    'course_aware': False,
+    'landing_url': '/test/',  # URL, на который перенаправить после успешного LTI-запроса
+}
+LTI_SUCCESS_URL = '/test/'
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = False
