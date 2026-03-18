@@ -1,0 +1,645 @@
+/* #header-container{
+    width: 100%;
+    height: 8.5vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: solid 2px #bb9999;
+}
+#footer-container{
+    width: 100%;
+    height: 8.5vh;
+    left: 0;
+    
+}
+.content{
+    margin-top:8.5vh;
+    margin-left: 12.5%;
+    width: 75%;
+    border: solid 2px #ff0000;
+}
+.content img{
+    left: 0;
+} */
+
+html{
+    box-sizing: border-box;
+    /* border: solid 3px #0400ff; */
+    min-width: 320px;
+    margin: 0; 
+    padding: 0; 
+}
+body{
+
+    min-width: 320px;
+    margin: 0; 
+    padding: 0; 
+    font-family: "Pangolin", "Arial", sans-serif; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #ffffff;
+    background: #000;
+    /* border: solid 3px #ff0000; */
+}
+.header {
+    z-index: 100;
+    width: 100%;
+    min-height: 80px; 
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    transition: 0.4s;
+}
+.header.scrolled{
+    background-color: rgba(0, 0, 0, 0.575);
+}
+
+.header-content{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 200px;
+}
+
+.header-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.47vw;
+}
+.logo-img{
+    height: 50px;
+}
+.logo-text {
+    font-size: 25px;
+    margin-left: 8px;
+}
+.header-menu {
+    display: flex;
+    gap: 70px;
+}
+.header-menu a{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Viaoda Libre", "sans-serif";
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+.header-menu a i{
+    margin-right: 10px;
+}
+.header-user-menu{
+    display: flex;
+    gap: 50px;
+}
+.header-user-menu i:hover{
+    cursor: pointer;
+}
+.mobile_menu_wrapper{
+    display: none;
+}
+.header-mobile {
+    background-color: #f1f1f1b6;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+    top: 80px;
+    position:fixed;
+    display: none;
+}
+.header-menu-mobile{
+    margin-top: 7vh;
+    font-size: 7vw;
+    font-family: "Pangolin", "sans-serif";
+    display:grid;
+    min-height: 25vh;
+
+}
+.header-menu-mobile a{
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 10%;
+    color: #000;
+    text-decoration: none;
+}
+.show{
+    display: block;
+}
+
+.container {
+    position: relative; 
+    margin: 0; 
+    /* width: 1300px; */
+    padding: 0;
+    /* border: solid 2px #ff9595; */
+}
+.rooms .container{
+    text-align: center;
+    /* border: solid 2px red; */
+    width: 100%; 
+    padding-top: 80px;
+}
+.titleRooms{
+    margin-top: 1.8vw;
+    margin-bottom: 0;
+    font-family: "Pangolin";
+    font-size: 30px;
+}
+.descriptionRooms{
+    margin-top: 1.1vw;
+    margin-bottom: 50px;
+    font-family: "Pangolin";
+    font-size: 20px; 
+    color: #666666;
+}
+.roomsListContainer{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+    display: block;
+}
+.roomsList {
+    display: inline-block;
+    width: 100%;
+    /* border: solid 2px red; */
+    justify-content: space-between;
+    /* gap: 20px; */
+    padding: 0;
+    overflow: hidden;
+}
+.photo img{
+    width: inherit;
+    max-width: 100%;
+    background-size: cover;
+    /* border-radius: 0.2vw; */
+}
+.photo{
+    width: 800px;
+    max-width: 90%;
+    padding: 0;
+    text-align: center;
+    margin-inline: 20px;
+    margin-block: 20px;
+    background: #00000000;
+    /* font-size: 1.1vw;
+    font-family: "Pangolin";
+    color: #ffffff;
+    text-decoration: none; */
+    border: none;
+    /* border: solid 2px red; */
+    /* width: 600px; */
+    padding: 0;
+}
+.photo:hover{
+    cursor: zoom-in;
+}
+.openedPhotoContainer{
+    display: block;
+}
+.closedPhotoContainer{
+    display: none;
+}
+.openedPhotoContainer .close{
+    background:none ;
+    border: none;
+    color: white;
+    z-index: 102;
+    position: fixed;
+    right: 0;
+    width: 100px;
+    height: 100px;
+}
+.openedPhotoContainer .close:hover{
+    cursor: pointer;
+}
+.openedPhoto{
+    background: #000;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    height: 100vh;
+}
+.openedPhoto img{
+    background-size: cover;
+    max-height: 95vh;
+    max-width: 80%;
+}
+.openedPhoto button{
+    background: none;
+    border: none;
+    width: 400px;
+    height: 95vh;
+}
+.openedPhoto button:hover{
+    cursor: pointer;
+}
+.toLeftPhoto{
+    position: absolute;
+    left: 0;
+}
+footer{
+    margin-top: 40px;
+}
+.footerio{
+    border-top: solid 2px #c7c7c7;
+}
+.footerio .container{
+    width: 100%;
+}
+.infoLHN{
+    display: flex;
+}
+.infoFuniro{
+    width: 30%;
+}
+.titleFuniro{
+    font-size: 26px;
+}
+.descriptionFuniro{
+    font-family: "Pangolin",'Arial';
+    color: #9f9f9f;
+}
+.LHN{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    font-family: "Pangolin",'Arial';
+    /* border: solid 2px green; */
+    
+}
+.LHN a{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Pangolin",'Arial';
+    font-size: 20px;
+}
+.rights{
+    border-top: solid 2px #c7c7c7;
+    font-family: "Pangolin",'Arial';
+}
+.rights p{
+    margin-top: 25px;
+}
+.mobile_footer{
+    display: none;
+}
+.mobile_footer .rights p{
+    margin-left: 20px;
+}
+.ground {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    opacity: 0;
+    animation: slideAnimation 15s infinite;
+}
+.slide-ground{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.slide-1-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide-1-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 40% 70%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 80% 40%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 60% 80%, white, rgba(255,255,255,0));
+    background-repeat: repeat;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.slide-1-anim::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+    radial-gradient(2px 2px at 15% 25%, white, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 85% 45%, white, rgba(255,255,255,0)),
+        radial-gradient(1.5px 1.5px at 72% 68%, white, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 35% 80%, white, rgba(255,255,255,0)),
+        radial-gradient(1.5px 1.5px at 90% 15%, white, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 55% 35%, white, rgba(255,255,255,0)),
+        radial-gradient(1.5px 1.5px at 28% 55%, white, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 65% 85%, white, rgba(255,255,255,0)),
+        
+        radial-gradient(1px 1px at 5% 10%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 95% 30%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 42% 12%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 78% 92%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 23% 78%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 60% 48%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 88% 62%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 12% 42%, white, rgba(255,255,255,0)),
+        
+        radial-gradient(0.8px 0.8px at 8% 18%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 92% 8%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 38% 28%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 68% 38%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 18% 88%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 82% 72%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 45% 58%, white, rgba(255,255,255,0)),
+        radial-gradient(0.8px 0.8px at 75% 22%, white, rgba(255,255,255,0)),
+        
+        radial-gradient(1.2px 1.2px at 32% 65%, white, rgba(255,255,255,0)),
+        radial-gradient(1.2px 1.2px at 58% 15%, white, rgba(255,255,255,0)),
+        radial-gradient(0.7px 0.7px at 85% 78%, white, rgba(255,255,255,0)),
+        radial-gradient(0.7px 0.7px at 22% 32%, white, rgba(255,255,255,0)),
+        radial-gradient(1.8px 1.8px at 48% 90%, white, rgba(255,255,255,0)),
+        radial-gradient(1.8px 1.8px at 95% 55%, white, rgba(255,255,255,0)),
+        radial-gradient(0.9px 0.9px at 15% 68%, white, rgba(255,255,255,0)),
+        radial-gradient(0.9px 0.9px at 65% 5%, white, rgba(255,255,255,0)),
+        
+        radial-gradient(1px 1px at 3% 95%, white, rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 97% 25%, white, rgba(255,255,255,0)),
+        radial-gradient(1.3px 1.3px at 25% 8%, white, rgba(255,255,255,0)),
+        radial-gradient(1.3px 1.3px at 52% 75%, white, rgba(255,255,255,0)),
+        radial-gradient(0.6px 0.6px at 78% 45%, white, rgba(255,255,255,0)),
+        radial-gradient(0.6px 0.6px at 35% 52%, white, rgba(255,255,255,0)),
+        radial-gradient(1.5px 1.5px at 88% 85%, white, rgba(255,255,255,0)),
+        radial-gradient(1.5px 1.5px at 42% 38%, white, rgba(255,255,255,0));
+
+    animation: twinkle 1s ease-in-out infinite reverse;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+.slide-1 {
+    animation-delay: 0s;
+}
+.slide-1-moon {
+
+}
+.slide-1-moon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%; /* Свечение больше луны */
+    height: 98%;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px 8px rgba(255, 193, 146, 0.3),
+        0 0 40px 16px rgba(255, 169, 137, 0.2);
+    animation: moon-glow 4s ease-in-out infinite alternate;
+    z-index: -1;
+    /* Убедимся, что псевдоэлемент не кликабелен */
+    pointer-events: none;
+}
+
+@keyframes moon-glow {
+    0% {
+        box-shadow: 
+            0 0 40px 15px rgba(255, 108, 55, 0.3),
+            0 0 80px 30px rgba(255, 121, 72, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 50px 20px rgba(255, 169, 137, 0.6),
+            0 0 100px 40px rgba(255, 169, 137, 0.5);
+    }
+}
+.photographer-text {
+    position: absolute;
+    bottom: 23%;
+    left: 18%;
+    color: rgb(255, 255, 255);
+    font-family: 'Viaoda Libre', sans-serif;
+}
+.text-line {
+    display: block;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.text-line span {
+    display: inline-block;
+    opacity: 0;
+    animation: letter-glow 15s forwards infinite;
+}
+
+/* Анимация для первой строки */
+.text-line:nth-child(1) span {
+    animation-delay: calc(0.1s * var(--i));
+}
+
+/* Анимация для второй строки */
+.text-line:nth-child(2) span {
+    animation-delay: calc(1s + 0.1s * var(--i));
+}
+
+/* Анимация для третьей строки */
+.text-line:nth-child(3) span {
+    animation-delay: calc(2s + 0.1s * var(--i));
+}
+
+/* Анимация появления с подсвечиванием */
+@keyframes letter-glow {
+    0% {
+        opacity: 0;
+        color: rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+    16.66% {
+        opacity: 1;
+        color: white;
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 40px rgba(255, 255, 255, 0.6);
+        transform: scale(1.1);
+    }
+    33.33% {
+        opacity: 1;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        transform: scale(1);
+    }
+}
+
+.text-line span {
+    transition: text-shadow 0.3s ease;
+}
+
+.text-line span:hover {
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.9),
+        0 0 25px rgba(255, 255, 255, 0.6) !important;
+}
+
+.slide-2 {
+    animation-delay: 5s;
+}
+.photographer-text-2 {
+    position: absolute;
+    bottom: 40%;
+    left: 11%;
+    color: black;
+    font-family: 'Viaoda Libre', sans-serif;
+}
+.text-line-2 {
+    display: block;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.text-line-2 span {
+    display: inline-block;
+    opacity: 0;
+    animation: letter-glow-black 15s forwards infinite;
+}
+.text-line-2:nth-child(1) span {
+    animation-delay: calc(0.1s * var(--i));
+}
+
+/* Анимация для второй строки */
+.text-line-2:nth-child(2) span {
+    animation-delay: calc(1s + 0.1s * var(--i));
+}
+
+.text-line-2 span {
+    transition: text-shadow 0.3s ease;
+}
+
+.text-line-2 span:hover {
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.9),
+        0 0 25px rgba(255, 255, 255, 0.6) !important;
+}
+@keyframes letter-glow-black {
+    33.33% {
+        opacity: 0;
+        color: rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+        transform: scale(1.1);
+    }
+    49.66% {
+        opacity: 1;
+        color: rgb(0, 0, 0);
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 40px rgba(255, 255, 255, 0.6);
+        transform: scale(1);
+    }
+    66.66% {
+        opacity: 1;
+        color: rgb(0, 0, 0);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        transform: scale(1);
+    }
+}
+.slide-3 {
+    animation-delay: 10s;
+}
+
+@keyframes slideAnimation {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+    }
+    43% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@media (max-width: 1920px){
+    /* .header-menu a{
+        font-size: ;
+    } */
+    .descriptionRooms{
+        margin-bottom: 1.2vw;
+    }
+    .photo{
+        width: 530px;
+    }
+}
+@media (max-width: 1440px){
+    .header-menu a{
+        font-size: 20px;
+    }
+    .photo{
+        width: 360px;
+    }
+}
+
+@media (max-width: 1100px){
+
+    .photo{
+        width: 280px;
+    }
+}
+
+@media (max-width: 768px){
+    
+    .photo{
+        width: 360px;
+    }
+}
+@media (max-width: 600px){
+    .header-menu a{
+        font-size: 17px;
+    }
+    .photo{
+        width: 340px;
+    }
+}
+@media (max-width: 480px){
+    .titleFuniro{
+        font-size: 20px;
+    }
+    .descriptionFuniro{
+        font-size: 15px;
+    }
+    .LHN a{
+        font-size: 15px;
+    }
+}
